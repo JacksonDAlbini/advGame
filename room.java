@@ -10,4 +10,8 @@ public room(int initRoomNum, String initRoomName, String initDesc, String initPu
     puzzle = initPuzzle;
     boolean complete = false;
 }
+public void setComplete(){
+    complete = true;
+    puzzle = "You may pass through this room freely";
+}
 }
