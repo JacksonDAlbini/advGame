@@ -14,4 +14,13 @@ public void setComplete(){
     complete = true;
     puzzle = "You may pass through this room freely";
 }
+public int getRoomNum(){
+    return roomNum;
+}
+public String getDesc(){
+    return desc;
+}
+public String getPuzzle(){
+    return puzzle;
+}
 }

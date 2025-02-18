@@ -71,10 +71,114 @@ public class adventureGame{
         String name = scan.nextLine();
         player1.setName(name);
         System.out.println("Hello " + player1.getName() + "!");
+        //GAME START
+        //ROOM 1
         System.out.println("You wake up in a dark room, you see a door to one side of the room and a large vent on the other side.");
         System.out.println("Which way do you go?");
         System.out.println("1. Door");
         System.out.println("2. Vent");
         int choice = scan.nextInt();
+        //ROOM 2
+        if (choice == 1){
+            player1.setRoomId(2);
+            System.out.println(room2.getDesc());
+            System.out.println(room2.getPuzzle());
+            System.out.println("1. Ice");
+            System.out.println("2. Fire");
+            System.out.println("3. Snow");
+            int answer = scan.nextInt();
+            if (answer == 1){
+                System.out.println("The doll smiles and you hear a click, the door behind you unlocks.");
+                room2.setComplete();
+                player1.setRoomId(3);
+                //ROOM 3
+                System.out.println(room3.getDesc());
+                System.out.println(room3.getPuzzle());
+                System.out.println("1. Turn around");
+                System.out.println("2. Break the painting");
+                choice = scan.nextInt();
+                if (choice == 1){
+                    System.out.println("You turn around and see the door shut behind you. The room starts to collapse and you die.");
+                    player1.setRoomId(1);
+                }
+                else{
+                    System.out.println("You break the painting and find a hole to a hallway.");
+                    player1.setRoomId(4);
+                    room3.setComplete();
+                    player1.setRoomId(4);
+                    //ROOM 4
+                    System.out.println(room4.getDesc());
+                    System.out.println(room4.getPuzzle());
+                    System.out.println("1. Open the door");
+                    System.out.println("2. Turn around");
+                    choice = scan.nextInt();
+                    if (choice == 1){
+                        System.out.println("You open the door and find a library.");
+                        room4.setComplete();
+                        player1.setRoomId(5);
+                        //ROOM 5
+                        System.out.println(room5.getDesc());
+                        System.out.println(room5.getPuzzle());
+                        System.out.println("1. Blue");
+                        System.out.println("2. Black");
+                        System.out.println("3. Red");
+                        choice = scan.nextInt();
+                        if (choice == 1){
+                            System.out.println("The book fits into the slot and the wall opens up to a hallway. You find a key, aswell.");
+                            room5.setComplete();
+                            player1.setKey1();
+                            player1.setRoomId(6);
+                            //ROOM 6
+                            System.out.println(room6.getDesc());
+                            System.out.println(room6.getPuzzle());
+                            System.out.println("1. Keyhole");
+                            System.out.println("2. Lounge");
+                            choice = scan.nextInt();
+                            if (choice == 1){
+                                System.out.println("You see a keyhole, but you don't have a key.");
+                                player1.setRoomId(6);
+                            }
+                            else{
+                                System.out.println("You walk into the lounge and see a door to the study.");
+                                player1.setRoomId(9);
+                            }
+                        }
+                        else{
+                            System.out.println("The doors all around you swing shut and you are trapped.");
+                            System.out.println("You slowly wither away in the room.");
+                            player1.setRoomId(1);
+                        }
+                    else{
+                        System.out.println("You turn around to see the paintings staring at you, you get dizzy and collapse.");
+                        player1.setRoomId(1);
+                    }
+                }
+            }
+            else{
+                System.out.println("The doll frowns and you hear a click, the door behind you locks.");
+                System.out.println("You have no choice but to turn around.");
+            }
+        }
+        else{
+            //ROOM 8
+            player1.setRoomId(8);
+            System.out.println(room8.getDesc());
+            System.out.println(room8.getPuzzle());
+            System.out.println("1. Wind");
+            System.out.println("2. Water");
+            System.out.println("3. Fire");
+            choice = scan.nextInt();
+            if (choice ==1){
+                System.out.println("All of the sudden the door to the lounge swings open.");
+                room8.setComplete();
+                //ROOM 9
+                player1.setRoomId(9);
+            }
+            else{
+                System.out.println("The book bursts into flames, it engulfs the room in fire.");
+                System.out.println("The fire consumes you and unfortunately you have died.");
+                player1.setRoomId(1);
+            }
+        }
     }
 }
